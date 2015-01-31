@@ -61,6 +61,8 @@ func (c Command) Run(ctx *Context) error {
 		if arg == "--" {
 			terminatorIndex = index
 			break
+		} else if strings.HasPrefix(arg, "--") && firstFlagIndex == -2 {
+			firstFlagIndex = index
 		} else if strings.HasPrefix(arg, "-") && firstFlagIndex == -1 {
 			firstFlagIndex = index
 		}
